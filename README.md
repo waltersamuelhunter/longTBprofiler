@@ -16,8 +16,9 @@ The analysis is performed in an Unix enviroment (Mac/Linux). The required tools 
 
 ### Installation guide
 
-1. Install mamba. 
-I. go to: https://conda-forge.org/download/
+#### Mamba.
+
+I. Go to: https://conda-forge.org/download/
 II. choose the correct version for your system (x86_64/arm64), then right click and "copy link adress"
 III. open terminal, go to home directory (with command "cd")
 IV. type "wget", paste the copied link and then enter
