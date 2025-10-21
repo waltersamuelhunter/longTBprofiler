@@ -1,0 +1,16 @@
+name: longtbprofiler_env
+channels: 
+- bioconda
+- conda-forge
+- defaults
+dependencies: 
+- nanoplot
+- nanocomp
+- minimap2
+- samtools
+- ivar
+- tb-profiler
+- python3 
+- numpy
+- pandas
+- scikit-allel
