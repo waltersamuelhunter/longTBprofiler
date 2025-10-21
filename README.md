@@ -14,10 +14,10 @@ The analysis is performed in an Unix enviroment (Mac/Linux). The required tools 
 - TB-Profiler
 
 
-### Installation guide
+## Installation guide
 First we need to install mamba. Mamba is a package manager that will help us easily install all bioinformatic tools for LongTBprofiler pipeline.
 
-#### Mamba.
+### Mamba.
 
 I. Go to: https://conda-forge.org/download/
 
@@ -82,6 +82,12 @@ It stould print the version of mamba, show the location of installation and list
   ```
 4. Accept package installations/updates if prompted. 
 
+
+## Analysis
+
+
+
+### Preprocessing - quality check, reads removal
 
 
 
