@@ -85,7 +85,20 @@ It stould print the version of mamba, show the location of installation and list
 
 ## Analysis
 
+Create a directory for an analysis.
 
+  ```
+  mkdir tutorial_tb_longreads
+  cd
+  ```
+Move your fastq files to this directory.
+In case you don't have your own data and what to try this pipeline, you can download sample from NCBI SRA database. However, you need to have sra-tool kit installed. 
+
+  ``` # downloading example sample
+  prefetch SRR35794931
+  find . -mindepth 2 -type f -name "*.sra" -exec mv {} . \;
+  fasterq-dump SRR35794931.sra
+  ```
 
 ### Preprocessing - quality check, reads removal
 
