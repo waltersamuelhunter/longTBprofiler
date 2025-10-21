@@ -119,3 +119,25 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
 
+3. Perform Read Mapping
+
+   I. Download Reference genome from NCBI
+
+  ```
+  mkdir reference
+  wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz -o ./reference/reference.fna
+  cd reference
+  ```
+
+  II. Map samples to the reference
+
+  ```
+
+
+  
+
+  ```
+
+
+   II. unzip 
+
