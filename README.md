@@ -25,7 +25,10 @@ IV. After a moment u have your miniforge downloaded. Check the name of file by v
 V. Copy the name of the downloaded file. It should be "Miniforge3-Linux-x86_64.sh " or something similar.
 VI. Write
 
-  ```bash "Miniforge3-Linux-x86_64.sh" ```
+  ```
+  bash "Miniforge3-Linux-x86_64.sh"
+
+  ```
 
 
 
