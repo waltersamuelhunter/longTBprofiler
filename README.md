@@ -82,6 +82,8 @@ It stould print the version of mamba, show the location of installation and list
   ```
 4. Accept package installations/updates if prompted. 
 
+Note that it might take several minutes and u might not see any logs in the meantime.
+
 
 ## Analysis
 
@@ -98,11 +100,22 @@ In case you don't have your own data and what to try this pipeline, you can down
   prefetch SRR35794931
   find . -mindepth 2 -type f -name "*.sra" -exec mv {} . \;
   fasterq-dump SRR35794931.sra
+  gzip SRR35794931.fastq 
   ```
 
 ### Preprocessing - quality check, reads removal
 
+1. Activate mamba environment with all the packages
+  ```
+  mamba activate longtbprofiler_env
+  ```
 
+2.  Generate quality report using nanocomp and nanoplot
 
+  ```
 
+  NanoComp -fastq SRR35794931.fastq.gz -o ./nanocomp_quality_report
+  NanoPlot --fastq SRR35794931.fastq.gz -o ./nanoplot_quality_report
+
+  ```
 
