@@ -135,12 +135,12 @@ mkdir -p ./data/target
 
 2.  Generate quality report using nanocomp and nanoplot
 
-  # for single sample 
+  #### for single sample 
   ```
   NanoPlot --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanoplot_quality_report
   NanoPlot --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanoplot_quality_report
   ```
-  # for multiple samples
+  #### for multiple samples
   ```
   NanoComp --fastq ./data/WGS/barcode83.fastq.gz ./data/target/barcode51.fastq.gz -o ./QC/WGS/nanocomp_quality_report
   ```
