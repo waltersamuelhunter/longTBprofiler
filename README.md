@@ -141,7 +141,7 @@ In case you don't have your own data and what to try this pipeline, you can down
   NanoComp --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanocomp_quality_report
   NanoComp --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanocomp_quality_report
 
-
+  NanoComp --fastq ./data/WGS/barcode83.fastq.gz ./data/target/barcode51.fastq.gz -o ./QC/WGS/nanocomp_quality_report
 
   ```
 
@@ -164,10 +164,14 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
   mkdir mapped
-  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam -
-  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam -
-
   ```
+  ```
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam -
+  ```
+  ```
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam -
+  ```
+  
  
   III. Samtools
 
