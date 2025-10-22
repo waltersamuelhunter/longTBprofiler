@@ -1,15 +1,15 @@
-e
+
 # longTBprofiler
 
 LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict antibiotic resistance. 
 
 ## Software requirments 
 
-The analysis is performed in an Unix enviroment (Mac/Linux). The required tools for this pipeline are:
+The analysis is performed in an Unix enviroment (Mac/Linux). The main tools utilized in this pipeline are:
 - Nanoplot
 - Nanocomp
 - tb-profiler
-- pip
+- TbLR
 
 
 ## Installation guide
@@ -28,7 +28,7 @@ III. Go to home directory in terminal (with command "cd")
 
   ```
 
-IV. Download the most recent miniforge version, suitable for your software
+IV. Download the miniforge
 
   ```
   wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
@@ -62,48 +62,37 @@ XIX. Check if mamba has been successfully installed.
   mamba
   ```
 
-It stould print the version of mamba, show the location of installation and list options. If you see these, your mamba has been installed correctly and u can proceed. If not, please inform one of the instructors. 
+It should print the version of mamba, show the location of installation and list options. If you see these, your mamba has been installed correctly and u can proceed. If not, please inform one of the instructors. 
 
 
 #### Packages 
 
-1. Copy the content of "latest.txt" file from this github repository.
+1. Download the 
    
-2. Create a txt file
-  ```
-  nano packages.txt
-  ```
-
-3. Paste the copied content, then save by cltr + x and then "y"
-   
-4. Create an enviroment containing required packages.
+2. Download the txt file ("secret-ingredients") from the provided google drive link and move it to your home directory in ubuntu.
+  
+3. Create an enviroment containing required packages.
 
   ```
-  mamba create -name longmtbc --file latest.txt
+  mamba create -name longmtbc --file secret-ingredients.txt
+  mamba activate longmtbc
+  mamba install pip
+  pip install tblg
   ```
 
 4. Accept package installations/updates if prompted. 
 
-Note that it might take several minutes and u might not see any logs in the meantime.
-
-
 ## Analysis
 
-Create a directory for an analysis.
+Now, we have environment ready with all the neccessary packages. Finally we can start analysis. 
 
-  ```
-  mkdir tutorial_tb_longreads
-  cd
-  ```
-Move your fastq files to this directory.
-In case you don't have your own data and what to try this pipeline, you can download sample from NCBI SRA database. However, you need to have sra-tool kit installed. 
+Move your fastq files to the home directory.
+To check home directory, type:
+```
+pwd
+```
 
-  ``` # downloading example sample
-  prefetch SRR35794931
-  find . -mindepth 2 -type f -name "*.sra" -exec mv {} . \;
-  fasterq-dump SRR35794931.sra
-  gzip SRR35794931.fastq 
-  ```
+
 
 ### Preprocessing - quality check, reads removal
 
