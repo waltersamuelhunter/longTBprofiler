@@ -145,7 +145,8 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
 
-3. Perform Read Mapping
+### Perform Read Mapping
+
 
    I. Download Reference genome from NCBI
 
@@ -171,6 +172,11 @@ In case you don't have your own data and what to try this pipeline, you can down
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam -
   ```
+
+*if the terminal show you problem with permissions, type:
+  ```
+  sudo chmod -R a+rwx /path/to/your/directory
+  ```
   
  
   III. Samtools
@@ -181,10 +187,13 @@ In case you don't have your own data and what to try this pipeline, you can down
   samtools index ./mapped_varcall/target/barcode51_sorted.bam
   ```
 
-  IV. lofreq 
+### Variant calling
+
+  I. lofreq 
 
   ```
   lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/WGS/barcode83.vcf ./mapped_varcall/WGS/barcode83_sorted.bam
+  ```
   ```
   lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/target/barcode51.vcf ./mapped_varcall/target/barcode51_sorted.bam
   ```
