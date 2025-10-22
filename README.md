@@ -222,24 +222,40 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
   mkdir ./tblg
   mkdir -p ./tblg/WGS
   mkdir -p ./tblg/target
-   
+  ```
 
   I. TB-Profiler
 
+  for WGS
   ```
-  tb-profiler profile 
+  tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/WGS/barcode83.fastq.gz --dir ./TB_Profiler/WGS/
+  ```
 
+  for target
+  ```
+  tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/target/barcode51.fastq.gz --dir ./TB_Profiler/target/
 
   ```
+
+  View your drug resistance and lineage typing results in:
+  ```
+  ls ./TB_Profiler/WGS/
+  ls ./TB_Profiler/target/
+  ```
+  
   
 
   II. TbLG 
 
-
-  Run the lineage typing analysis.
-
+  for WGS
   ```
-  tblg --o 
+  cd ./tblg/WGS
+  tblg ../../mapped_varcall/WGS/barcoded83.vcf -o csv
+  ```
+  for targeted
+  ```
+  cd ./tblg/target
+  tblg ../../mapped_varcall/target/barcoded51.vcf -o csv
   ```
 
 
