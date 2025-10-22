@@ -74,8 +74,8 @@ It should print the version of mamba, show the location of installation and list
 3. Create an enviroment containing required packages.
 
   ```
-  mamba create -name longmtbc --file secret-ingredients.txt
-  mamba activate longmtbc
+  mamba create -n longmtb --file secret-ingredients.txt
+  mamba activate longmtb
   mamba install pip
   pip install tblg
   ```
@@ -92,15 +92,13 @@ To check home directory, type:
 pwd
 ```
 
-
-
 ### Preprocessing - quality check, reads removal
 
 *change the sample name if its different than barcode83, 51..
 
 1. Activate mamba environment with all the packages
   ```
-  mamba activate longtbprofiler_env
+  mamba activate longmtbc
   ```
 
 2.  Generate quality report using nanocomp and nanoplot
@@ -118,19 +116,31 @@ pwd
 
 ### Perform Read Mapping
 
-
    I. Download Reference genome from NCBI
 
   ```
-  mkdir reference
-  cd reference
-  wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz
-  mv GCF_000195955.2_ASM19595v2_genomic.fna.gz reference.fna.gz
-  gunzip -d reference.fna
-  head reference.fna
-  cd ..
-  
+  mkdir -p ./data/reference
   ```
+  ```
+  cd ./data/reference
+  ```
+  ```
+  wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz
+  ```
+  ```
+  mv GCF_000195955.2_ASM19595v2_genomic.fna.gz reference.fna.gz
+  ```
+  ```
+  gunzip -d reference.fna
+  ```
+  ```
+  head -10 reference.fna
+  ```
+  ```
+  cd ..
+  ```
+  
+
 
   II. Map samples to the reference
 
