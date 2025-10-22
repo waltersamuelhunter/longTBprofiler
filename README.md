@@ -190,7 +190,13 @@ mkdir -p ./data/target
   #### for targeted sequencing data
   
   ```
-  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam 
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam
+  ```
+  To check if mapping was sucessfull (u should see sorted.bam files)
+  ```
+  ls 
+  ./mapped_varcall/WGS
+  ./mapped_varcall/target
   ```
 
 *if the terminal show you some problem with permissions, type:
@@ -211,17 +217,8 @@ mkdir -p ./data/target
   ```
   samtools index ./mapped_varcall/target/barcode51_sorted.bam
   ```
-  To check if mapping was sucessfull (u should see sorted.bam files)
-  
-  ```
-  ls 
-  ./mapped_varcall/WGS
-  ./mapped_varcall/target
-  ```
-  ```
-  samtools index ./mapped_varcall/target/barcode51_sorted.bam
-  ```
-  to check if indexing was succesfull (u should see .bam.bai file)
+
+   to check if indexing was succesfull (u should see .bam.bai file)
   ```
   ls 
   ./mapped_varcall/WGS
