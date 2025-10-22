@@ -2,7 +2,8 @@
 # _longTBprofiler_
 
 LongTBprofiler is workflow/framework utilizing long-read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict drug resistance.
-# Software requirments
+
+# Software requirements
 
 The analysis is performed in an Unix enviroment (Mac/Linux). The main tools utilized in this pipeline are:
 - Nanoplot (https://github.com/wdecoster/NanoPlot)
