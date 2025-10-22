@@ -1,4 +1,4 @@
-
+e
 # longTBprofiler
 
 LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict antibiotic resistance. 
@@ -172,6 +172,13 @@ In case you don't have your own data and what to try this pipeline, you can down
 ### Variant calling
 
   I. lofreq 
+
+freebayes 
+
+freebayes --ploidy 1-f./data/reference/reference.fna ./mapped_varcall/wgs/ barcoded83_sorted.bam > ./mapped_varcall/wgs/barcoded83.vcf 
+
+freebayes --ploidy 1-f./data/reference/reference.fna ./mapped_varcall/target/barcoded51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
+
 
   ```
   lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/WGS/barcode83.vcf ./mapped_varcall/WGS/barcode83_sorted.bam
