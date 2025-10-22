@@ -81,10 +81,7 @@ channels:
 dependencies: 
 - nanoplot
 - nanocomp
-- minimap2
-- samtools
-- lofreq
-- python
+- tb-profiler
 
   ```
    
