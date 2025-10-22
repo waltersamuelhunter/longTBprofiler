@@ -67,31 +67,21 @@ It stould print the version of mamba, show the location of installation and list
 
 #### Packages 
 
-1. Copy the content of "packages.yaml" file from this github repository.
+1. Copy the content of "latest.txt" file from this github repository.
    
+2. Create a txt file
   ```
-name: longtb_env
-channels: 
-- bioconda
-- conda-forge
-- defaults
-dependencies: 
-- nanoplot
-- nanocomp
-- tb-profiler
+  nano packages.txt
+  ```
 
-  ```
+3. Paste the copied content, then save by cltr + x and then "y"
    
-3. In the terminal, create a packages.yaml file and paste the copied content.
+4. Create an enviroment containing required packages.
 
   ```
-  nano packages.yaml
+  mamba create -name longmtbc --file latest.txt
   ```
-3. Create an enviroment containing packages listed in the yaml file
 
-  ```
-  mamba create -f packages.yaml
-  ```
 4. Accept package installations/updates if prompted. 
 
 Note that it might take several minutes and u might not see any logs in the meantime.
