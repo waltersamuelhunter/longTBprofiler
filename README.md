@@ -8,11 +8,8 @@ LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to
 The analysis is performed in an Unix enviroment (Mac/Linux). The required tools for this pipeline are:
 - Nanoplot
 - Nanocomp
-- minimap2
-- samtools
-- ivar
-- mtbtyper (with dependencies) 
-- TB-Profiler
+- tb-profiler
+- pip
 
 
 ## Installation guide
