@@ -133,18 +133,17 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
   mkdir mapped
-  minimap2 -a -x lr:hq ./reference/reference.fna SRR35794931.fastq.gz > ./mapped/alligment.sam
-  minimap2 -a -x lr:hq ref.fa query.fq > alignment.sam
+  minimap2 -a -x lr:hq ./reference/reference.fna SRR35794931.fastq.gz | samtools sort -O bam -o ./mapped/alignment_sorted.bam -
 
   ```
 
-  III.
+  III. Samtools
+
+  ``` 
+  samtools index alignment_sorted.bam 
 
   ```
-  samtools fixmate -r -O bam alligment.sam fixmate.bam
-  samtools sort -l 1 -o 
-  samtools markdup
-  samtools view 
-  ```
+
+  IV. lofreq 
 
 
