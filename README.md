@@ -178,7 +178,7 @@ mkdir -p ./data/target
   mkdir -p ./mapped_varcall/WGS
   mkdir -p ./mapped_varcall/target
   ```
-  ```
+  
 
   ### Minimap2
 
@@ -194,6 +194,7 @@ mkdir -p ./data/target
   ```
 
 *if the terminal show you some problem with permissions, type:
+
   ```
   sudo chmod -R a+rwx /path/to/your/directory
   ```  
