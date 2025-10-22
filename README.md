@@ -67,32 +67,37 @@ It should print the version of mamba, show the location of installation and list
 
 #### Packages 
 
-1. Download the 
-   
-2. Download the txt file ("secret-ingredients") from the provided google drive link and move it to your home directory in ubuntu.
+1. Download the txt file ("secret-ingredients") from the provided google drive link and move it to your home directory in ubuntu.
   
-3. Create an enviroment containing required packages.
+2. Create an enviroment containing required packages.
 
   ```
   mamba create -n longmtb --file secret-ingredients.txt
   mamba activate longmtb
-  mamba install pip
+  mamba install pip nanocomp nanoplot
   pip install tblg
   ```
 
-4. Accept package installations/updates if prompted. 
+3. Accept package installations/updates if prompted. 
 
 ## Analysis
 
 Now, we have environment ready with all the neccessary packages. Finally we can start analysis. 
 
-Move your fastq files to the home directory.
-To check home directory, type:
+Transfer your files to correct directories.
+
+1. To check home directory, type:
 ```
 pwd
 ```
+2. Create subdirectories inside your home directory for your fastq files
+```
+mkdir -p ./data/WGS
+mkdir -p ./data/target
 
-### Preprocessing - quality check, reads removal
+3. Move your WGS and targeted sequencing (amplicon) fastq files to correct directories.
+
+### Quality check - generating report for long read data
 
 *change the sample name if its different than barcode83, 51..
 
@@ -141,51 +146,65 @@ pwd
   ```
   
 
-
   II. Map samples to the reference
 
   ```
-  mkdir mapped_varcall
+  mkdir ./mapped_varcall
+  mkdir -p ./mapped_varcall/WGS
+  mkdir -p ./mapped_varcall/target
   ```
+  Mapping WGS data
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam 
   ```
+  Mapping targeted sequencing data
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam 
   ```
 
-*if the terminal show you problem with permissions, type:
+*if the terminal show you some problem with permissions, type:
   ```
   sudo chmod -R a+rwx /path/to/your/directory
   ```
   
  
-  III. Samtools
+  III. Indexing the mapped reads
 
+  WGS
   ``` 
   samtools index ./mapped_varcall/WGS/barcode83_sorted.bam
   ```
+  targeted sequencing
+  ```
+  To check if mapping was sucessfull (u should see sorted.bam files)
+  ```
+  ```
+  ls 
+  ./mapped_varcall/WGS
+  ./mapped_varcall/target
+  ```
+  ```
   samtools index ./mapped_varcall/target/barcode51_sorted.bam
+  ```
+  to check if indexing was succesfull (u should see .bam.bai file)
+  ```
+  ls 
+  ./mapped_varcall/WGS
+  ./mapped_varcall/target
   ```
 
 ### Variant calling
 
-  I. lofreq 
+  I. freebayes
 
-freebayes 
-
-freebayes --ploidy 1-f./data/reference/reference.fna ./mapped_varcall/wgs/ barcoded83_sorted.bam > ./mapped_varcall/wgs/barcoded83.vcf 
-
-freebayes --ploidy 1-f./data/reference/reference.fna ./mapped_varcall/target/barcoded51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
-
-
+  for WGS
   ```
-  lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/WGS/barcode83.vcf ./mapped_varcall/WGS/barcode83_sorted.bam
+  freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/wgs/barcoded83_sorted.bam >     ./mapped_varcall/wgs/barcoded83.vcf 
   ```
+  for targeted sequencing
   ```
-  lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/target/barcode51.vcf ./mapped_varcall/target/barcode51_sorted.bam
+  freebayes --ploidy 1 -f./data/reference/reference.fna ./mapped_varcall/target/barcoded51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
   ```
-
 
 
 ### Lineage drug resistance typing 
