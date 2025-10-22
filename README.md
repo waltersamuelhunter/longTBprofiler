@@ -132,12 +132,19 @@ In case you don't have your own data and what to try this pipeline, you can down
   II. Map samples to the reference
 
   ```
-
-
-  
+  mkdir mapped
+  minimap2 -a -x lr:hq ./reference/reference.fna SRR35794931.fastq.gz > ./mapped/alligment.sam
+  minimap2 -a -x lr:hq ref.fa query.fq > alignment.sam
 
   ```
 
+  III.
 
-   II. unzip 
+  ```
+  samtools fixmate -r -O bam alligment.sam fixmate.bam
+  samtools sort -l 1 -o 
+  samtools markdup
+  samtools view 
+  ```
+
 
