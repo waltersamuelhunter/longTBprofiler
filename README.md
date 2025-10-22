@@ -133,9 +133,6 @@ In case you don't have your own data and what to try this pipeline, you can down
   NanoPlot --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanoplot_quality_report
 
   # for multiple samples
-  NanoComp --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanocomp_quality_report
-  NanoComp --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanocomp_quality_report
-
   NanoComp --fastq ./data/WGS/barcode83.fastq.gz ./data/target/barcode51.fastq.gz -o ./QC/WGS/nanocomp_quality_report
 
   ```
