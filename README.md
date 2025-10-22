@@ -3,7 +3,7 @@
 
 LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict antibiotic resistance. 
 
-## Software requirments 
+## Software requirments
 
 The analysis is performed in an Unix enviroment (Mac/Linux). The main tools utilized in this pipeline are:
 - Nanoplot
@@ -25,7 +25,6 @@ III. Go to home directory in terminal (with command "cd")
 
   ```
   cd
-
   ```
 
 IV. Download the miniforge
@@ -39,7 +38,6 @@ IV. After a moment u have your miniforge downloaded. Check the name of file by v
 
   ```
   ls
-
   ```
 
 
@@ -49,7 +47,6 @@ VI. Run the downloaded script to install mamba.
 
   ```
   bash "Miniforge3-Linux-x86_64.sh"
-
   ```
 
 VII. Accept the terms of service when prompted. 
@@ -94,6 +91,7 @@ pwd
 ```
 mkdir -p ./data/WGS
 mkdir -p ./data/target
+```
 
 3. Move your WGS and targeted sequencing (amplicon) fastq files to correct directories.
 
