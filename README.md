@@ -13,13 +13,13 @@ The analysis is performed in an Unix enviroment (Mac/Linux). The main tools util
 - TB-Profiler (https://github.com/jodyphelan/TBProfiler)
 - TbLG (https://github.com/dbespiatykh/tblg)
 
-Detailed descriptions of commands offered by these tools are available at their corresponding github, websites as well as by typing the following in the command line "tool name [function]-h". For example:
+Detailed descriptions of commands offered by these tools are available at their corresponding github pages, their websites, as well as available after typing the following in the command line: "tool name [function] -h". For example:
   ```
   tb-profiler profile -h 
   ```
 
 # Installation guide
-First we need to install mamba. Mamba is a package manager that will help us easily install all bioinformatic tools for the longTBprofiler pipeline.
+First we need to install mamba. Mamba is a package manager, that will help us easily install all of the bioinformatic tools required for the longTBprofiler.
 
 ## Mamba
 
