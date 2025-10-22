@@ -179,14 +179,16 @@ mkdir -p ./data/target
   mkdir -p ./mapped_varcall/target
   ```
   ```
-  Mapping WGS data
-  ```
+
+  ### Minimap2
+
+  #### for WGS data
+  
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam 
   ```
-  ```
-  Mapping targeted sequencing data
-  ```
+  #### for targeted sequencing data
+  
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam 
   ```
@@ -198,11 +200,13 @@ mkdir -p ./data/target
  
   III. Indexing the mapped reads
 
-  WGS
+  ### Samtools
+
+  #### for WGS data
   ``` 
   samtools index ./mapped_varcall/WGS/barcode83_sorted.bam
   ```
-  targeted sequencing
+  #### for targeted sequencing data
   ```
   samtools index ./mapped_varcall/target/barcode51_sorted.bam
   ```
@@ -227,11 +231,11 @@ mkdir -p ./data/target
 
   ### freebayes
 
-  #### for WGS
+  #### for WGS data
   ```
   freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/WGS/barcode83_sorted.bam > ./mapped_varcall/wgs/barcoded83.vcf 
   ```
-  #### for targeted sequencing
+  #### for targeted sequencing data
   ```
   freebayes --ploidy 1 -f./data/reference/reference.fna ./mapped_varcall/target/barcode51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
   ```
@@ -253,12 +257,12 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
 
   ### TB-Profiler
 
-  for WGS
+  #### for WGS data
   ```
   tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/WGS/barcode83.fastq.gz --dir ./TB_Profiler/WGS/
   ```
 
-  for target
+  #### for targeted sequencing data
   ```
   tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/target/barcode51.fastq.gz --dir ./TB_Profiler/target/
 
@@ -274,12 +278,12 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
 
   ### TbLG 
 
-  for WGS
+  #### for WGS data
   ```
   cd ./tblg/WGS
   tblg ../../mapped_varcall/WGS/barcoded83.vcf -o csv
   ```
-  for targeted
+  #### for targeted sequencing data
   ```
   cd ./tblg/target
   tblg ../../mapped_varcall/target/barcoded51.vcf -o csv
