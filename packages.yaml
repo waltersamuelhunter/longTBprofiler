@@ -8,11 +8,6 @@ dependencies:
 - nanocomp
 - minimap2
 - samtools
-- ivar
-- tb-profiler
-- python3 
-- pip
-- numpy
-- pandas
-- scikit-allel
-- sra-tools
+- lofreq
+- python 
+
