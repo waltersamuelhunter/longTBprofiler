@@ -1,3 +1,4 @@
+
 # longTBprofiler
 
 LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict antibiotic resistance. 
@@ -210,52 +211,15 @@ In case you don't have your own data and what to try this pipeline, you can down
 
 
 
-  I. Mtbtyper
-  First let's create a new environment for mtbtyper. Create a new yaml file:
-
-  ```
-  nano mtbtyper_packages.yaml
-  ```
-  and paste the following:
-  ```
-name: mtbtyper_env
-channels: 
-- conda-forge
-- defaults
-dependencies:
-- python
-- numpy
-- pandas
-- scikit-allel
-  ```
-  
-  save the file (ctrl+x, then "y")
-
-  Then create a new mamba environment using the file u've just created.
-
-  ```
-  mamba create -f mtbtyper_packages.yaml
-  ```
-  Activate the environment
-
-  mamba activate mtbtyper_env
-
-  mamba env list 
-
-
-
-  ```
-  mtbtyper.py vcf -o lineage --all_schemes
-  ```
-
-
-
   II. Tblg
 
   Create a new environemnt for Tuberculosis Lineage Genotyping (TbLG)
 
   ```
-  mamba create -n tblg_env python pip tblg 
+  mamba create -n tblg_env python pip
+  pip install tblg
+  mamba activate tblg_env
+  pip install tblg
   ```
 
 
