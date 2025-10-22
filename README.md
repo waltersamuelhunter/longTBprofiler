@@ -1,5 +1,5 @@
 
-# longTBprofiler
+# _longTBprofiler_
 
 LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict antibiotic resistance. 
 
@@ -62,7 +62,7 @@ XIX. Check if mamba has been successfully installed.
 It should print the version of mamba, show the location of installation and list options. If you see these, your mamba has been installed correctly and u can proceed. If not, please inform one of the instructors. 
 
 
-#### Packages 
+## Packages 
 
 1. Download the txt file ("secret-ingredients") from the provided google drive link and move it to your home directory in ubuntu.
   
@@ -77,7 +77,7 @@ It should print the version of mamba, show the location of installation and list
 
 3. Accept package installations/updates if prompted. 
 
-## Analysis
+# Analysis
 
 Now, we have environment ready with all the neccessary packages. Finally we can start analysis. 
 
@@ -95,7 +95,7 @@ mkdir -p ./data/target
 
 3. Move your WGS and targeted sequencing (amplicon) fastq files to correct directories.
 
-### Quality check - generating report for long read data
+## Quality check - generating report for long read data
 
 *change the sample name if its different than barcode83, 51..
 
@@ -116,7 +116,7 @@ mkdir -p ./data/target
   NanoComp --fastq ./data/WGS/barcode83.fastq.gz ./data/target/barcode51.fastq.gz -o ./QC/WGS/nanocomp_quality_report
   ```
 
-### Perform Read Mapping
+## Read Alignment/mapping
 
    I. Download Reference genome from NCBI
 
@@ -194,21 +194,21 @@ mkdir -p ./data/target
   ./mapped_varcall/target
   ```
 
-### Variant calling
+## Variant calling
 
-  I. freebayes
+  ### freebayes
 
-  for WGS
+  #### for WGS
   ```
   freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/WGS/barcode83_sorted.bam > ./mapped_varcall/wgs/barcoded83.vcf 
   ```
-  for targeted sequencing
+  #### for targeted sequencing
   ```
   freebayes --ploidy 1 -f./data/reference/reference.fna ./mapped_varcall/target/barcode51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
   ```
 
 
-### Lineage drug resistance typing
+## Lineage drug resistance typing
 
 We will use TB-Profiler for drug resistance prediction and lineage identification. Additionally, we will use TbLG for more precise lineage identification. 
 
@@ -222,7 +222,7 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
   mkdir -p ./tblg/target
   ```
 
-  #### TB-Profiler
+  ### TB-Profiler
 
   for WGS
   ```
@@ -243,7 +243,7 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
   
   
 
-  #### TbLG 
+  ### TbLG 
 
   for WGS
   ```
