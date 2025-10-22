@@ -1,0 +1,9 @@
+name: mtbtyper_env
+channels: 
+- conda-forge
+- defaults
+dependencies:
+- python
+- numpy
+- pandas
+- scikit-allel
