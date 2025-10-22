@@ -70,7 +70,24 @@ It stould print the version of mamba, show the location of installation and list
 #### Packages 
 
 1. Copy the content of "packages.yaml" file from this github repository.
-2. In the terminal, create a packages.yaml file and paste the copied content.
+   
+  ```
+name: longtbprofiler_env
+channels: 
+- bioconda
+- conda-forge
+- defaults
+dependencies: 
+- nanoplot
+- nanocomp
+- minimap2
+- samtools
+- lofreq
+- python
+
+  ```
+   
+3. In the terminal, create a packages.yaml file and paste the copied content.
 
   ```
   nano packages.yaml
@@ -116,11 +133,15 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
 
+  # for single sample 
+  NanoPlot --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanoplot_quality_report
+  NanoPlot --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanoplot_quality_report
+
+  # for multiple samples
   NanoComp --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanocomp_quality_report
   NanoComp --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanocomp_quality_report
 
-  NanoPlot --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanoplot_quality_report
-  NanoPlot --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanoplot_quality_report
+
 
   ```
 
@@ -134,7 +155,7 @@ In case you don't have your own data and what to try this pipeline, you can down
   wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz
   mv GCF_000195955.2_ASM19595v2_genomic.fna.gz reference.fna.gz
   gunzip -d reference.fna
-  cat reference.fna
+  head reference.fna
   cd ..
   
   ```
