@@ -3,19 +3,19 @@
 
 LongTBprofiler is workflow/framework utilizing long read Oxford Nanopore data to classify Mycobacterium tuberculosis isolates into lineages and predict antibiotic resistance. 
 
-## Software requirments
+# Software requirments
 
 The analysis is performed in an Unix enviroment (Mac/Linux). The main tools utilized in this pipeline are:
 - Nanoplot
 - Nanocomp
-- tb-profiler
+- TB-profiler
 - TbLR
 
 
-## Installation guide
+# Installation guide
 First we need to install mamba. Mamba is a package manager that will help us easily install all bioinformatic tools for LongTBprofiler pipeline.
 
-### Mamba.
+## Mamba
 
 I. Go to: https://conda-forge.org/download/
 
