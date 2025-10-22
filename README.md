@@ -105,6 +105,8 @@ In case you don't have your own data and what to try this pipeline, you can down
 
 ### Preprocessing - quality check, reads removal
 
+*change the sample name if its different than barcode83, 51..
+
 1. Activate mamba environment with all the packages
   ```
   mamba activate longtbprofiler_env
@@ -114,8 +116,11 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
 
-  NanoComp -fastq SRR35794931.fastq.gz -o ./nanocomp_quality_report
-  NanoPlot --fastq SRR35794931.fastq.gz -o ./nanoplot_quality_report
+  NanoComp --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanocomp_quality_report
+  NanoComp --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanocomp_quality_report
+
+  NanoPlot --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanoplot_quality_report
+  NanoPlot --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanoplot_quality_report
 
   ```
 
@@ -125,25 +130,44 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ```
   mkdir reference
-  wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz -o ./reference/reference.fna
   cd reference
+  wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/195/955/GCF_000195955.2_ASM19595v2/GCF_000195955.2_ASM19595v2_genomic.fna.gz
+  mv GCF_000195955.2_ASM19595v2_genomic.fna.gz reference.fna.gz
+  gunzip -d reference.fna
+  cat reference.fna
+  cd ..
+  
   ```
 
   II. Map samples to the reference
 
   ```
   mkdir mapped
-  minimap2 -a -x lr:hq ./reference/reference.fna SRR35794931.fastq.gz | samtools sort -O bam -o ./mapped/alignment_sorted.bam -
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam -
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam -
 
   ```
-
+ 
   III. Samtools
 
   ``` 
-  samtools index alignment_sorted.bam 
+  samtools index ./mapped_varcall/WGS/barcode83_sorted.bam
+  samtools index ./mapped_varcall/target/barcode51_sorted.bam
 
   ```
 
   IV. lofreq 
 
+  ```
+  lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/WGS/barcode83.vcf ./mapped_varcall/WGS/barcode83_sorted.bam
+  lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/target/barcode51.vcf ./mapped_varcall/target/barcode51_sorted.bam
 
+
+  lofreq call -f ref.fa -o vars.vcf aln.bam
+
+
+  V. Mtbtyper
+
+  VI. Tblg
+
+  VII. TB-profiler 
