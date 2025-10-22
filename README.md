@@ -257,12 +257,12 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
 
   #### for WGS data
   ```
-  tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/WGS/barcode83.fastq.gz --dir ./TB_Profiler/WGS/
+  tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/WGS/barcode83.fastq.gz --dir ./TB_Profiler/WGS/ --csv
   ```
 
   #### for targeted sequencing data
   ```
-  tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/target/barcode51.fastq.gz --dir ./TB_Profiler/target/
+  tb-profiler profile --platform nanopore --call_whole_genome -1 ./data/target/barcode51.fastq.gz --dir ./TB_Profiler/target/ --csv
 
   ```
 
