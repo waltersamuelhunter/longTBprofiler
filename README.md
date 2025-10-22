@@ -167,10 +167,10 @@ In case you don't have your own data and what to try this pipeline, you can down
   mkdir mapped_varcall
   ```
   ```
-  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam -
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam 
   ```
   ```
-  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam -
+  minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam 
   ```
 
 *if the terminal show you problem with permissions, type:
@@ -200,8 +200,78 @@ In case you don't have your own data and what to try this pipeline, you can down
 
 
 
-  V. Mtbtyper
+### Lineage drug resistance typing 
 
-  VI. Tblg
+  Prepare directories for typing results
+  ```
+  mkdir TB_Profiler
+  cd TB_Profiler 
+  mkdir 
 
-  VII. TB-profiler 
+
+
+  I. Mtbtyper
+  First let's create a new environment for mtbtyper. Create a new yaml file:
+
+  ```
+  nano mtbtyper_packages.yaml
+  ```
+  and paste the following:
+  ```
+name: mtbtyper_env
+channels: 
+- conda-forge
+- defaults
+dependencies:
+- python
+- numpy
+- pandas
+- scikit-allel
+  ```
+  
+  save the file (ctrl+x, then "y")
+
+  Then create a new mamba environment using the file u've just created.
+
+  ```
+  mamba create -f mtbtyper_packages.yaml
+  ```
+  Activate the environment
+
+  mamba activate mtbtyper_env
+
+  mamba env list 
+
+
+
+  ```
+  mtbtyper.py vcf -o lineage --all_schemes
+  ```
+
+
+
+  II. Tblg
+
+  Create a new environemnt for Tuberculosis Lineage Genotyping (TbLG)
+
+  ```
+  mamba create -n tblg_env python pip tblg 
+  ```
+
+
+  Run the lineage typing analysis.
+
+  ```
+  tblg --o 
+  ```
+
+  III. TB-profiler
+
+  Create a new environment for TB-profiler
+
+  ```
+  mamba create -n tbprofiler_env tb-profiler
+  ```
+  ```
+  tb-profiler
+  ```
