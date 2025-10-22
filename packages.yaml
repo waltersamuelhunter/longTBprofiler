@@ -1,4 +1,4 @@
-name: longtbprofiler_env
+name: longtb_env
 channels: 
 - bioconda
 - conda-forge
