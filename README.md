@@ -72,7 +72,7 @@ It stould print the version of mamba, show the location of installation and list
 1. Copy the content of "packages.yaml" file from this github repository.
    
   ```
-name: longtbprofiler_env
+name: longtb_env
 channels: 
 - bioconda
 - conda-forge
