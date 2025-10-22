@@ -162,7 +162,7 @@ mkdir -p ./data/target
   mv GCF_000195955.2_ASM19595v2_genomic.fna.gz reference.fna.gz
   ```
   ```
-  gunzip -d reference.fna
+  gunzip -d reference.fna.gz
   ```
   ```
   head -10 reference.fna
