@@ -6,21 +6,30 @@ LongTBprofiler is workflow/framework utilizing long-read Oxford Nanopore data to
 
 The analysis is performed in an Unix enviroment (Mac/Linux). The main tools utilized in this pipeline are:
 - Nanoplot (https://github.com/wdecoster/NanoPlot)
-- Nanocomp
-- Minimap2
-- freebayes
-- TB-Profiler
-- TbLR
+- Nanocomp (https://github.com/wdecoster/nanocomp)
+- Minimap2 (https://github.com/lh3/minimap2)
+- freebayes (https://github.com/freebayes/freebayes) 
+- TB-Profiler (https://github.com/jodyphelan/TBProfiler)
+- TbLG (https://github.com/dbespiatykh/tblg)
 
+Detailed descriptions of commands offered by these tools are available at their corresponding github, websites as well as by typing the following in the command line "tool name [function]-h". For example:
+  ```
+  tb-profiler profile -h 
+  ```
 
 # Installation guide
-First we need to install mamba. Mamba is a package manager that will help us easily install all bioinformatic tools for LongTBprofiler pipeline.
+First we need to install mamba. Mamba is a package manager that will help us easily install all bioinformatic tools for the longTBprofiler pipeline.
 
 ## Mamba
 
 I. Go to: https://conda-forge.org/download/
 
-II. Choose the correct version for your system (x86_64/arm64), then right click and "copy link adress"
+II. Choose the correct version for your system (x86_64/arm64)*, then right click and "copy link adress"
+
+*u can check your system architecture by:
+  ```
+  arch
+  ```
 
 III. Go to home directory in terminal (with command "cd")
 
@@ -28,12 +37,12 @@ III. Go to home directory in terminal (with command "cd")
   cd
   ```
 
-IV. Download the miniforge
+IV. Download the miniforge 
 
+  For x86_64 architecture
   ```
   wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
   ```
-
 
 IV. After a moment u have your miniforge downloaded. Check the name of file by viewing the content of current directory with "ls"
 
@@ -52,7 +61,7 @@ VI. Run the downloaded script to install mamba.
 
 VII. Accept the terms of service when prompted. 
 
-VIII. Allow for initiation of mamba for each shell session.
+VIII. Do not allow for initiation of mamba for each shell session.
 
 XIX. Check if mamba has been successfully installed.
 
@@ -61,6 +70,25 @@ XIX. Check if mamba has been successfully installed.
   ```
 
 It should print the version of mamba, show the location of installation and list options. If you see these, your mamba has been installed correctly and u can proceed. If not, please inform one of the instructors. 
+  ```
+  Version: 2.3.0
+
+
+
+/home/walter/miniconda3/bin/mamba [OPTIONS] [SUBCOMMAND]
+
+
+OPTIONS:
+  -h,     --help              Print this help message and exit
+          --version
+
+Configuration options:
+          --rc-file FILE1 FILE2...
+                              Paths to the configuration files to use
+          --no-rc             Disable the use of configuration files
+          --no-env            Disable the use of environment variables
+
+  ```
 
 
 ## Packages 
