@@ -222,7 +222,7 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
   mkdir -p ./tblg/target
   ```
 
-  I. TB-Profiler
+  #### TB-Profiler
 
   for WGS
   ```
@@ -243,7 +243,7 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
   
   
 
-  II. TbLG 
+  #### TbLG 
 
   for WGS
   ```
