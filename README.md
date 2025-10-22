@@ -163,7 +163,7 @@ In case you don't have your own data and what to try this pipeline, you can down
   II. Map samples to the reference
 
   ```
-  mkdir mapped
+  mkdir mapped_varcall
   ```
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam -
@@ -177,18 +177,18 @@ In case you don't have your own data and what to try this pipeline, you can down
 
   ``` 
   samtools index ./mapped_varcall/WGS/barcode83_sorted.bam
+  ```
   samtools index ./mapped_varcall/target/barcode51_sorted.bam
-
   ```
 
   IV. lofreq 
 
   ```
   lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/WGS/barcode83.vcf ./mapped_varcall/WGS/barcode83_sorted.bam
+  ```
   lofreq call -f ./data/reference/reference.fna -o ./mapped_varcall/target/barcode51.vcf ./mapped_varcall/target/barcode51_sorted.bam
+  ```
 
-
-  lofreq call -f ref.fa -o vars.vcf aln.bam
 
 
   V. Mtbtyper
