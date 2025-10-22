@@ -108,15 +108,14 @@ mkdir -p ./data/target
 
 2.  Generate quality report using nanocomp and nanoplot
 
-  ```
-
   # for single sample 
+  ```
   NanoPlot --fastq ./data/WGS/barcode83.fastq.gz -o ./QC/WGS/nanoplot_quality_report
   NanoPlot --fastq ./data/target/barcode51.fastq.gz -o ./QC/target/nanoplot_quality_report
-
+  ```
   # for multiple samples
+  ```
   NanoComp --fastq ./data/WGS/barcode83.fastq.gz ./data/target/barcode51.fastq.gz -o ./QC/WGS/nanocomp_quality_report
-
   ```
 
 ### Perform Read Mapping
@@ -145,7 +144,6 @@ mkdir -p ./data/target
   cd ..
   ```
   
-
   II. Map samples to the reference
 
   ```
@@ -153,11 +151,15 @@ mkdir -p ./data/target
   mkdir -p ./mapped_varcall/WGS
   mkdir -p ./mapped_varcall/target
   ```
+  ```
   Mapping WGS data
+  ```
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/WGS/barcode83.fastq.gz | samtools sort -O bam -o ./mapped_varcall/WGS/barcode83_sorted.bam 
   ```
+  ```
   Mapping targeted sequencing data
+  ```
   ```
   minimap2 -a -x lr:hq ./data/reference/reference.fna ./data/target/barcode51.fastq.gz | samtools sort -O bam -o ./mapped_varcall/target/barcode51_sorted.bam 
   ```
@@ -165,8 +167,7 @@ mkdir -p ./data/target
 *if the terminal show you some problem with permissions, type:
   ```
   sudo chmod -R a+rwx /path/to/your/directory
-  ```
-  
+  ```  
  
   III. Indexing the mapped reads
 
@@ -176,8 +177,10 @@ mkdir -p ./data/target
   ```
   targeted sequencing
   ```
-  To check if mapping was sucessfull (u should see sorted.bam files)
+  samtools index ./mapped_varcall/target/barcode51_sorted.bam
   ```
+  To check if mapping was sucessfull (u should see sorted.bam files)
+  
   ```
   ls 
   ./mapped_varcall/WGS
@@ -199,34 +202,38 @@ mkdir -p ./data/target
 
   for WGS
   ```
-  freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/wgs/barcoded83_sorted.bam >     ./mapped_varcall/wgs/barcoded83.vcf 
+  freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/WGS/barcode83_sorted.bam > ./mapped_varcall/wgs/barcoded83.vcf 
   ```
   for targeted sequencing
   ```
-  freebayes --ploidy 1 -f./data/reference/reference.fna ./mapped_varcall/target/barcoded51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
+  freebayes --ploidy 1 -f./data/reference/reference.fna ./mapped_varcall/target/barcode51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
   ```
 
 
-### Lineage drug resistance typing 
+### Lineage drug resistance typing
+
+We will use TB-Profiler for drug resistance prediction and lineage identification. Additionally, we will use TbLG for more precise lineage identification. 
 
   Prepare directories for typing results
   ```
-  mkdir TB_Profiler
-  cd TB_Profiler 
-  mkdir 
+  mkdir ./TB_Profiler
+  mkdir -p ./TB_Profiler/WGS  
+  mkdir -p ./TB_Profiler/target
+  mkdir ./tblg
+  mkdir -p ./tblg/WGS
+  mkdir -p ./tblg/target
+   
 
-
-
-  II. Tblg
-
-  Create a new environemnt for Tuberculosis Lineage Genotyping (TbLG)
+  I. TB-Profiler
 
   ```
-  mamba create -n tblg_env python pip
-  pip install tblg
-  mamba activate tblg_env
-  pip install tblg
+  tb-profiler profile 
+
+
   ```
+  
+
+  II. TbLG 
 
 
   Run the lineage typing analysis.
@@ -235,13 +242,5 @@ mkdir -p ./data/target
   tblg --o 
   ```
 
-  III. TB-profiler
 
-  Create a new environment for TB-profiler
 
-  ```
-  mamba create -n tbprofiler_env tb-profiler
-  ```
-  ```
-  tb-profiler
-  ```
