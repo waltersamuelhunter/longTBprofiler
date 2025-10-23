@@ -105,7 +105,13 @@ Configuration options:
   mamba activate longmtb
   ```
   ```
-  mamba install pip nanocomp nanoplot
+  mamba install pip
+  ```
+  ```
+  conda install bioconda::nanocomp
+  ```
+  ```
+  conda install -c bioconda nanoplot
   ```
   ```
   pip install tblg
