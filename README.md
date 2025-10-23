@@ -100,8 +100,14 @@ Configuration options:
 
   ```
   mamba create -n longmtb --file secret-ingredients.txt
+  ```
+  ```
   mamba activate longmtb
+  ```
+  ```
   mamba install pip nanocomp nanoplot
+  ```
+  ```
   pip install tblg
   ```
 
