@@ -57,7 +57,7 @@ V. Copy the name of the downloaded file. It should be "Miniforge3-Linux-x86_64.s
 VI. Run the downloaded script to install mamba.
 
   ```
-  bash "Miniforge3-Linux-x86_64.sh"
+  bash Miniforge3-Linux-x86_64.sh
   ```
 
 VII. Accept the terms of service when prompted. 
