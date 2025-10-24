@@ -243,12 +243,12 @@ mkdir -p ./data/target
   ### freebayes
 
   #### for WGS data
+
   ```
-  freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/WGS/barcode83_sorted.bam > ./mapped_varcall/wgs/barcoded83.vcf 
+  samtools index ./mapped_varcall/WGS/barcode83_sorted.bam
   ```
-  #### for targeted sequencing data
   ```
-  freebayes --ploidy 1 -f./data/reference/reference.fna ./mapped_varcall/target/barcode51_sorted.bam > ./mapped_varcall/target/barcoded51.vcf
+  freebayes --ploidy 1 -f ./data/reference/reference.fna ./mapped_varcall/WGS/barcode83_sorted.bam > ./mapped_varcall/WGS/barcoded83.vcf 
   ```
 
 
