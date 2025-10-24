@@ -292,7 +292,7 @@ We will use TB-Profiler for drug resistance prediction and lineage identificatio
   #### for WGS data
   ```
   cd ./tblg/WGS
-  tblg ../../mapped_varcall/WGS/barcoded83.vcf -o csv
+  tblg ../../mapped_varcall/WGS/barcoded83.vcf -o lineage.csv
   ```
   #### for targeted sequencing data
   ```
